@@ -37,7 +37,7 @@ WEB : MARVEL CONTROLLER - WEB CONFIG(MULTI LENGUAJE SPRING)
 http://localhost:8080/
 
 # WEBSERVICES #
-Markup : (http://localhost:8080/webservices/characters/) and (http://localhost:8080/webservices/characters/1011334)
+http://localhost:8080/webservices/characters/ and http://localhost:8080/webservices/characters/1011334
 
 # OPCIONAL CFG FOR GOOGLE CLOUD #
 
