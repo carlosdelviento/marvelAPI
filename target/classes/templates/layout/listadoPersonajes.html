@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>Listado Clientes</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+	<section th:fragment="listadoPersonajes" id="personajes">
+		<div class="container">
+			<div class="row">
+				<div class="col-auto col-sm-auto col-md-auto col-lg-auto">
+					<div class="card">
+						<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)" th:if="${mensaje != null}" th:text="${mensaje}" 
+							class="alert alert-dismissible fade show" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="card-header">
+							<h4>[[#{personaje.titulo-lista}]]</h4>
+						</div>
+						<div th:if="${listPersonajes != null and !listPersonajes.empty}">
+							<table id="personajesTable" class="table table-stryped">
+								<thead class="thead-dark">
+									<tr>
+										<th>
+											<a style="color:#ffffff" th:text="#{personaje.id}">
+												ID</a>
+										</th>
+										<th>
+											<a style="color:#ffffff" th:text="#{personaje.nombre}">
+												Nombre</a>
+										</th>
+										<th>
+											<a style="color:#ffffff" th:text="#{personaje.descripcion}">
+												Descripcion</a>
+										</th>
+										<th></th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- Recorre el listado agregado al modelo del controlador -->
+									<tr th:each="personaje : ${listPersonajes}">
+										<td>[[${personaje.id}]]</td>
+										<td>[[${personaje.name}]]</td>
+										<td>[[${personaje.description}]]</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						
+						<div class="text-center p-2"  th:if="${listPersonajes == null or listPersonajes.empty}">
+							<span th:text="#{personaje.lista-vacia}">Lista vacía</span>
+						</div>
+					</div>
+					
+					<div class="card text-center bg-danger text-white mb-3">
+						<div class="card-body">
+							<h3 class="card-title" th:text="#{personaje.totalPersonajes}">Total Personajes</h3>
+							<h4 class="card-text">
+								<i class="fas fa-users"></i> [[${totalPersonajes}]]
+							</h4>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
