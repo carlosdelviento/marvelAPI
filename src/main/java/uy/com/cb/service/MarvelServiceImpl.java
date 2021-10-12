@@ -25,16 +25,15 @@ public class MarvelServiceImpl implements MarvelService{
 	@Override
 	@Transactional(readOnly = true)
 	@Cacheable("personajes")
-	public CharacterResponse listarPersonajes() {
-		Long timeStamp = new Date().getTime();
+	public CharacterResponse listarPersonajes() throws Exception {
 		
 		try {
-			 Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			Long timeStamp = new Date().getTime();			
+			return client.listarPersonajes(timeStamp, PUBLIC_KEY, buildHash(timeStamp));
+			
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
 		}
-		
-		return client.listarPersonajes(timeStamp, PUBLIC_KEY, buildHash(timeStamp));
 	}
 
 	// Busqueda por id del personaje y retornar json por URI
@@ -43,10 +42,14 @@ public class MarvelServiceImpl implements MarvelService{
 	@Caching(evict = {
 			@CacheEvict(value="personaje", key="#p0"),
 			@CacheEvict(value="personajes", allEntries=true)})
-	public CharacterResponse encontrarPersonaje(Long id) {
-		Long timeStamp = new Date().getTime();
-
-		return client.encontrarPersonaje(id, timeStamp, PUBLIC_KEY, buildHash(timeStamp));
+	public CharacterResponse encontrarPersonaje(Long id) throws Exception {
+		
+		try {
+			Long timeStamp = new Date().getTime();
+			return client.encontrarPersonaje(id, timeStamp, PUBLIC_KEY, buildHash(timeStamp));			
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 	// Generar hash md5

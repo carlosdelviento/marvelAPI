@@ -26,13 +26,17 @@ public class MarvelController {
 	private MarvelService marvelService;
 
 	@GetMapping("/")
-		public String inicio(@ModelAttribute CharacterResponse personaje, Model model) {
-			var personajes = marvelService.listarPersonajes().getData().getResults();
-			log.info("Ejecutando el controlador Spring MVC");
-			model.addAttribute("listPersonajes", personajes);
-			model.addAttribute("totalPersonajes", personajes.size());
-			//return findPaginated(1, "nombre", "asc", model);
-			return "index";
+		public String inicio(@ModelAttribute CharacterResponse personaje, Model model) throws Exception {
+			try {
+				var personajes = marvelService.listarPersonajes().getData().getResults();
+				log.info("Ejecutando el controlador Spring MVC");
+				model.addAttribute("listPersonajes", personajes);
+				model.addAttribute("totalPersonajes", personajes.size());
+				//return findPaginated(1, "nombre", "asc", model);
+				return "index";				
+			} catch (Exception e) {
+				throw new Exception(e.getMessage());
+			}
 	}
 	
 	/*
@@ -71,16 +75,22 @@ public class MarvelController {
 	@ResponseStatus(OK)
 	@ResponseBody
 	@GetMapping("/marvel/characters")
-	public CharacterResponse getPersonajes() {
-
-		return marvelService.listarPersonajes();
+	public CharacterResponse getPersonajes() throws Exception {
+		try {
+			return marvelService.listarPersonajes();			
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 
 	@ResponseStatus(OK)
 	@ResponseBody
 	@GetMapping("/marvel/characters/{id}")
-	public CharacterResponse getPersonaje(@PathVariable(required = true) @NotNull @Size(min = 7, max = 7) Long id) {
-
-		return marvelService.encontrarPersonaje(id);
+	public CharacterResponse getPersonaje(@PathVariable(required = true) @NotNull @Size(min = 7, max = 7) Long id) throws Exception {
+		try {
+			return marvelService.encontrarPersonaje(id);			
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
 	}
 }
