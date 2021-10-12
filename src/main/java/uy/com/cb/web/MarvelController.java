@@ -70,7 +70,7 @@ public class MarvelController {
 	 */
 	@ResponseStatus(OK)
 	@ResponseBody
-	@GetMapping("/webservices/characters")
+	@GetMapping("/marvel/characters")
 	public CharacterResponse getPersonajes() {
 
 		return marvelService.listarPersonajes();
@@ -78,7 +78,7 @@ public class MarvelController {
 
 	@ResponseStatus(OK)
 	@ResponseBody
-	@GetMapping("/webservices/characters/{id}")
+	@GetMapping("/marvel/characters/{id}")
 	public CharacterResponse getPersonaje(@PathVariable(required = true) @NotNull @Size(min = 7, max = 7) Long id) {
 
 		return marvelService.encontrarPersonaje(id);

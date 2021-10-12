@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import uy.com.cb.controller.response.CharacterResponse;
 
-@FeignClient(name = "webservices", url = "${url.webservices}/v1/public")
+@FeignClient(name = "marvel", url = "${url.marvel}/v1/public")
 public interface MarvelComicsApi {
 
 	@GetMapping("/characters")
