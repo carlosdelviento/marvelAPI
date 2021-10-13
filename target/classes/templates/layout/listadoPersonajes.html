@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-<title>Listado Clientes</title>
+<title>Personajes Marvel</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
@@ -34,6 +34,9 @@
 										<th>
 											<a style="color:#ffffff" th:text="#{personaje.descripcion}">Descripcion</a>
 										</th>
+										<th>
+											<a style="color:#ffffff" th:text="#{comic.nombre}">Comic</a>
+										</th>
 										<th></th>
 										<th></th>
 									</tr>
@@ -44,7 +47,11 @@
 										<td>[[${personaje.id}]]</td>
 										<td>[[${personaje.name}]]</td>
 										<td>[[${personaje.description}]]</td>
+										<!-- implementar comic.name, esta en otro objeto distinto -->
 									</tr>
+									<!-- <tr th:each="comic : ${comics}">
+										<td></td>
+									</tr> -->
 								</tbody>
 
 							</table>

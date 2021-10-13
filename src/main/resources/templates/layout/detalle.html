@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <title>Personaje Marvel</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<title>Personajes Marvel</title>
 </head>
 <body>
-    <nav th:replace="components/navbar :: nav_bar"></nav>
-    <div class="container">
-        <div class="row mt-5" th:object="${personaje}">
-            <div class="col-4">
-                <img th:src="@{'/imagenes/'}+*{imagen}" alt="" class="img-fluid">
-            </div>
-            <div class="col-8">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title" th:text="*{titulo}">Card title</h5>
-                        <p class="card-text">ID : <span th:text="*{id}">1</span></p>
-                        <p class="card-text" th:if="*{name}">
-                            Descripcion <span th:text="*{description}"></span>
-                        </p>
-                        <p class="card-text" th:unless="name">
+	<header th:replace="layout/plantilla :: header"></header>
+	<div class="container">
+			<div class="row">
+				<div class="col-auto col-sm-auto col-md-auto col-lg-auto">
+					<div class="card" th:object="${personaje}">
+                        <h5 class="card-title" th:text="#{personaje.formulario}">Datos del personaje</h5>
+                        <p class="card-text" th:text="#{personaje.nombre}">Nombre</p>
+                        <p class="card-text" th:text="#{personaje.descripcion}">Descripcion</p>
+                        <p class="card-text"># Comics</p>
+                        <p class="card-text" th:text="#{personaje.id}">ID</p>
+                        <p class="card-text" th:unless="${name}">
                             <span class="text-danger">No hay personajes</span>
                         </p>
-                    </div>
-                    <hr>
-                    <div class="card-body">
-                        <p class="card-text" th:text="*{description}"></p>
                     </div>
                 </div>
             </div>
             <div class="col-12 mt-5">
                 <a th:href="@{/}" class="btn btn-outline-dark">Volver</a>
             </div>
-        </div>
-    </div>
+	</div>
+	<footer th:replace="layout/plantilla :: footer"></footer>
 </body>
 </html>
