@@ -17,10 +17,10 @@ public class ResultsResponse implements Serializable {
 
 	@Id
 	private Long id;
-
-	//@NotEmpty(message = "{NotEmpty.personaje.nombre}")
-	private String name;
-
-	private String description;
+	
+	private String name, description;
+	
+	private ComicResponse comics;
+	
 
 }

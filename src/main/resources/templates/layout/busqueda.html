@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/plantilla :: head">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<title>Busqueda</title>
+</head>
+<body>
+	<header th:replace="layout/plantilla :: header"></header>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="card-deck mt-5" th:if="${personajes.size}">
+					<h2>Resultados <span th:text="${resultado}"></span>":  </h2>
+				</div>
+				<div class="col-12 col-md-3" th:each="personaje : ${personajes}">
+					<div th:replace="layout/listadoPersonajes :: listadoPersonajes"></div>
+				</div>
+			</div>
+			<div class="row mt-5" th:unless="${videojuegos.size}">
+   				<div class="col-12">
+        			<h2>No hay resultados de "<span th:text="${resultado}"></span>"</h2>
+      			</div>
+   			</div>
+		</div>
+	</div>
+</body>
+</html>

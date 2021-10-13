@@ -2,6 +2,8 @@ package uy.com.cb.web;
 
 import static org.springframework.http.HttpStatus.OK;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -11,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import lombok.extern.slf4j.Slf4j;
 import uy.com.cb.controller.response.CharacterResponse;
+import uy.com.cb.controller.response.ResultsResponse;
 import uy.com.cb.service.MarvelService;
 
 @Controller
@@ -29,14 +33,43 @@ public class MarvelController {
 		public String inicio(@ModelAttribute CharacterResponse personaje, Model model) throws Exception {
 			try {
 				var personajes = marvelService.listarPersonajes().getData().getResults();
+				//var comics = marvelService.listarPersonajes().getData().getResults().get(0).getComics().getItems();
 				log.info("Ejecutando el controlador Spring MVC");
-				model.addAttribute("listPersonajes", personajes);
+				model.addAttribute("personajes", personajes);
+				//model.addAttribute("comics", comics);
 				model.addAttribute("totalPersonajes", personajes.size());
 				//return findPaginated(1, "nombre", "asc", model);
 				return "index";				
 			} catch (Exception e) {
-				throw new Exception(e.getMessage());
+				model.addAttribute("error", e.getMessage());
+				return "error";
 			}
+	}
+	
+	//Mostrar un personaje
+	@GetMapping("/detalle/{id}")
+	public String detallePersonaje(Model model, @PathVariable("id") Long id) {
+		try {
+			CharacterResponse personaje = (CharacterResponse) this.marvelService.encontrarPersonaje(id);
+			model.addAttribute("personaje", personaje);
+			return "layout/detalle";
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+			return "error";
+		}
+	}
+	
+	//Busqueda por id de personaje
+	@GetMapping(value = "/busqueda")
+	public String busquedaPersonaje(Model model, @RequestParam(value = "query",required = false) Long id) {
+		try {
+			CharacterResponse personajes = (CharacterResponse) this.marvelService.encontrarPersonaje(id);
+			model.addAttribute("personajes", personajes);
+			return "layout/busqueda";
+		} catch (Exception e) {
+			model.addAttribute("error", e.getMessage());
+			return "error";
+		}
 	}
 	
 	/*
@@ -88,7 +121,7 @@ public class MarvelController {
 	@GetMapping("/marvel/characters/{id}")
 	public CharacterResponse getPersonaje(@PathVariable(required = true) @NotNull @Size(min = 7, max = 7) Long id) throws Exception {
 		try {
-			return marvelService.encontrarPersonaje(id);			
+			return marvelService.encontrarPersonaje(id);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

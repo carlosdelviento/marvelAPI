@@ -21,38 +21,35 @@
 						<div class="card-header">
 							<h4>[[#{personaje.titulo-lista}]]</h4>
 						</div>
-						<div th:if="${listPersonajes != null and !listPersonajes.empty}">
+						<div th:if="${personajes != null and !personajes.empty}">
 							<table id="personajesTable" class="table table-stryped">
 								<thead class="thead-dark">
 									<tr>
 										<th>
-											<a style="color:#ffffff" th:text="#{personaje.id}">
-												ID</a>
+											<a style="color:#ffffff" th:text="#{personaje.id}">ID</a>
 										</th>
 										<th>
-											<a style="color:#ffffff" th:text="#{personaje.nombre}">
-												Nombre</a>
+											<a style="color:#ffffff" th:text="#{personaje.nombre}">Nombre</a>
 										</th>
 										<th>
-											<a style="color:#ffffff" th:text="#{personaje.descripcion}">
-												Descripcion</a>
+											<a style="color:#ffffff" th:text="#{personaje.descripcion}">Descripcion</a>
 										</th>
 										<th></th>
 										<th></th>
 									</tr>
 								</thead>
 								<tbody>
-									<!-- Recorre el listado agregado al modelo del controlador -->
-									<tr th:each="personaje : ${listPersonajes}">
+									<!-- Recorre el listado de personas agregado al modelo del controlador -->
+									<tr th:each="personaje : ${personajes}">
 										<td>[[${personaje.id}]]</td>
 										<td>[[${personaje.name}]]</td>
 										<td>[[${personaje.description}]]</td>
 									</tr>
 								</tbody>
+
 							</table>
 						</div>
-						
-						<div class="text-center p-2"  th:if="${listPersonajes == null or listPersonajes.empty}">
+						<div class="text-center p-2"  th:if="${personajes == null or personajes.empty}">
 							<span th:text="#{personaje.lista-vacia}">Lista vacía</span>
 						</div>
 					</div>
