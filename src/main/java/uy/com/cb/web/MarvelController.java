@@ -10,13 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import lombok.extern.slf4j.Slf4j;
-import uy.com.cb.controller.response.CharacterResponse;
+import uy.com.cb.entities.CharacterResponse;
 import uy.com.cb.service.MarvelService;
 
 @Controller
@@ -47,7 +46,7 @@ public class MarvelController {
 	public String detallePersonaje(Model model, @PathVariable("id") Long id) throws Exception {
 		try {
 			CharacterResponse personaje = marvelService.encontrarPersonaje(id);
-			model.addAttribute("personajes", personaje);
+			model.addAttribute("personaje", personaje);
 			return "layout/detalle";
 		} catch (Exception e) {
 			model.addAttribute("error", e.getMessage());

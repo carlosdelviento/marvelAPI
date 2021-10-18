@@ -13,11 +13,11 @@
 </head>
 
 <body>
-	<!-- 	Header -->
+	<!-- Header -->
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
 			<div class="container">
-				<a th:href="@{/}" class="navbar-brand" th:text="#{plantilla.titulo}">Marvel Comics</a>
+				<a th:href="@{/}" class="navbar-brand" th:text="#{plantilla.titulo}">Personajes MARVEL</a>
 				<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -29,8 +29,8 @@
 					</ul>
 				</div>
 				<form class="form-inline my-1 my-lg-0" th:action="@{/marvel/characters}" method="get">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="id">
-					<button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+					<input class="form-control mr-sm-2" type="search" th:placeholder="#{campo.buscar}" aria-label="Search" name="id"/>
+					<button class="btn btn-outline-light my-2 my-sm-0" type="submit" th:text="#{boton.buscar}">Buscar</button>
 				</form>
 			</div>
 		</nav>
@@ -47,7 +47,8 @@
 			</div>
 		</section>
 	</header>
-
+	
+	<!-- Footer -->
 	<footer th:fragment="footer" class="bg-dark text-white mt-5 p-5">
 		<div class="container">
 			<div class="col">

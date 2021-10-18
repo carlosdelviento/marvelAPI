@@ -1,4 +1,4 @@
-package uy.com.cb.controller.response;
+package uy.com.cb.entities;
 
 import java.io.Serializable;
 

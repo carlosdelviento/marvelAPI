@@ -12,10 +12,10 @@
 				<div class="col-auto col-sm-auto col-md-auto col-lg-auto">
 					<div class="card" th:object="${personaje}">
                         <h5 class="card-title" th:text="#{personaje.formulario}">Datos del personaje</h5>
-                        <p class="card-text" th:text="#{personaje.nombre}">Nombre</p>
-                        <p class="card-text" th:text="#{personaje.descripcion}">Descripcion</p>
+                        <p class="card-text" th:field="${name}">Nombre</p>
+                        <p class="card-text" th:field="${description}">Descripcion</p>
                         <p class="card-text"># Comics</p>
-                        <p class="card-text" th:text="#{personaje.id}">ID</p>
+                        <p class="card-text" th:field="#{id}">ID</p>
                         <p class="card-text" th:unless="${name}">
                             <span class="text-danger">No hay personajes</span>
                         </p>

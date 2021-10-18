@@ -10,7 +10,7 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import uy.com.cb.controller.response.*;
+import uy.com.cb.entities.*;
 import uy.com.cb.marvel.MarvelComicsApi;
 
 @Service

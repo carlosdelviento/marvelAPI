@@ -1,6 +1,6 @@
 package uy.com.cb.service;
 
-import uy.com.cb.controller.response.CharacterResponse;
+import uy.com.cb.entities.CharacterResponse;
 
 public interface MarvelService {
 
