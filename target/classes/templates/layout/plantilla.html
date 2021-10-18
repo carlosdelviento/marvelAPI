@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:fragment="head">
-<title>Personajes Marvel</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
-<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
-<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
-<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<title>Personajes Marvel</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+	<link rel="stylesheet" th:href="@{/webjars/font-awesome/css/all.css}" />
+	<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
+
 <body>
 	<!-- 	Header -->
 	<header th:fragment="header">
@@ -34,7 +34,7 @@
 				</form>
 			</div>
 		</nav>
-		
+
 		<section id="main-header" class="py-2 bg-danger text-white">
 			<div class="container">
 				<div class="row">
@@ -53,11 +53,13 @@
 			<div class="col">
 				<p class="lead text-center">
 					<a th:href="@{/(lang=es)}" class="text-white">ES</a> |
-					<a th:href="@{/(lang=en)}" class="text-white">EN</a> |	
-					<span>[[#{plantilla.pie-pagina}]] &copy; <a href="#" target="_self" class="text-white">Marvel Comics CB</a></span>
+					<a th:href="@{/(lang=en)}" class="text-white">EN</a> |
+					<span>[[#{plantilla.pie-pagina}]] &copy; <a href="#" target="_self" class="text-white">Marvel Comics
+							CB</a></span>
 				</p>
 			</div>
 		</div>
 	</footer>
 </body>
+
 </html>

@@ -10,7 +10,7 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import uy.com.cb.controller.response.CharacterResponse;
+import uy.com.cb.controller.response.*;
 import uy.com.cb.marvel.MarvelComicsApi;
 
 @Service
@@ -56,7 +56,7 @@ public class MarvelServiceImpl implements MarvelService{
 	private String buildHash(Long timeStamp) {
 		return DigestUtils.md5Hex(timeStamp + PRIVATE_KEY + PUBLIC_KEY);
 	}
-	
+
 	/*@Override
 	public Page<CharacterResponse> findPaginated(int pageNo, int pageSize, String sortField, String sortDirection) {
 		Sort sort = sortDirection.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortField).ascending() :

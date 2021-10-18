@@ -6,5 +6,6 @@ import lombok.Getter;
 
 @Getter
 public class DataResponse {
+
 	private List<ResultsResponse> results;
 }
